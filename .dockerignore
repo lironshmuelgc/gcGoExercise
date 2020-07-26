@@ -1,0 +1,11 @@
+*.md
+*.log
+*.txt
+.git
+.gitignore
+.pkg
+.github
+.vscode
+Dockerfile
+gcGoExercise
+vendor/

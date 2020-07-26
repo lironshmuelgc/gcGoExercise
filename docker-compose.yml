@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+    # add Go services here
+
+    rabbitmq:
+        container_name: "rabbitmq"
+        image: "rabbitmq:3-management"
+        hostname: "rabbit"
+        ports:
+            - "15672:15672"
+            - "5672:5672"
+        labels:
+            NAME: "rabbitmq"
+        volumes:
+            - ./rabbitmq.conf:/etc/rabbitmq/rabbitmq.config
+        networks:
+            - backend
+        healthcheck:
+            test: [ "CMD", "nc", "-z", "localhost", "5672" ]
+            interval: 5s
+            timeout: 15s
+            retries: 1
+
+networks:
+    backend:
